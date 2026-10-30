@@ -1,10 +1,5 @@
 repomix-output.xml
 
-# Skill-install leftovers (not part of the Lens)
-.agents/
-agent/
-.claude/
-skills-lock.json
 
 # Lens Studio / build leftovers
 touchline-lens/*.lock
