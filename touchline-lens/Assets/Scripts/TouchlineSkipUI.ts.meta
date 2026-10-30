@@ -1,0 +1,59 @@
+- !<AssetImportMetadata/a0ab237f-3e48-413a-96c4-69d6b4e352cb>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5f438b4a-a56d-480f-9ec1-a95ebe98b4d5
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5f438b4a-a56d-480f-9ec1-a95ebe98b4d5
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 7fc575fe-f635-415f-8f01-e721623b086d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/7fc575fe-f635-415f-8f01-e721623b086d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: d3f652d8-1dfe-44d5-b972-7f9c7cf7bc1c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    heightCm: false
+    label: false
+    viewDistanceCm: false
+    widthCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - label: Skip to next moment
+      widthCm: !<float> 15.000000
+      heightCm: 3.600000
+      viewDistanceCm: !<float> 140.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineSkipUI – \"Skip to next moment\" button</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input string label = "Skip to next moment" {"hint":"Button label"}'
+    - '// @input float widthCm = 15 {"hint":"Button width in cm (must fit the label + icon)", "widget":"slider", "min":5, "max":25, "step":0.5}'
+    - '// @input float heightCm = 3.6 {"hint":"Button height in cm", "widget":"slider", "min":2, "max":8, "step":0.1}'
+    - '// @input float viewDistanceCm = 140 {"hint":"Viewing distance in cm used to scale the label", "widget":"slider", "min":60, "max":250, "step":5}'
+    - '// @ui {"widget":"group_end"}'

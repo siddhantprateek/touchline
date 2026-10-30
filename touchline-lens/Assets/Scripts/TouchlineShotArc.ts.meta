@@ -1,0 +1,86 @@
+- !<AssetImportMetadata/1cae15f5-fc61-4d4f-98d7-bc57010bc605>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4433252c-ed5c-4beb-8a29-22696c2aafc0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4433252c-ed5c-4beb-8a29-22696c2aafc0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6dd32e91-1218-4bc3-908f-85a34a03f9fd
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6dd32e91-1218-4bc3-908f-85a34a03f9fd>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 5d2da114-1f08-413c-8e49-25d27acee774
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    ballColor: false
+    ballDiameterCm: false
+    durationSec: false
+    netDepthCm: false
+    peakBallDiameterCm: false
+    peakHeightCm: false
+    sphereMesh: false
+    towardUserCm: false
+    trailColor: false
+    trailCount: false
+    trailLifeSec: false
+    unlitMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      durationSec: 1.600000
+      peakHeightCm: !<float> 25.000000
+      towardUserCm: !<float> 15.000000
+      peakBallDiameterCm: 2.200000
+      ballDiameterCm: !<float> 1.000000
+      netDepthCm: 0.700000
+      trailCount: !<float> 22.000000
+      trailLifeSec: 0.700000
+      ballColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      trailColor: !<Vec4> {x: 1.000000, y: 0.850000, z: 0.400000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineShotArc – goal pop-out arc into the room</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material for ball and trail"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh for ball and trail beads"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float durationSec = 1.6 {"hint":"Arc duration in seconds", "widget":"slider", "min":0.6, "max":4, "step":0.05}'
+    - '// @input float peakHeightCm = 25 {"hint":"Peak height above the table, cm", "widget":"slider", "min":5, "max":60, "step":1}'
+    - '// @input float towardUserCm = 15 {"hint":"How far the arc bulges toward the user, cm", "widget":"slider", "min":0, "max":40, "step":1}'
+    - '// @input float peakBallDiameterCm = 2.2 {"hint":"Ball diameter at the peak, cm (grows from the table-size ball)", "widget":"slider", "min":0.5, "max":4, "step":0.05}'
+    - '// @input float ballDiameterCm = 1 {"hint":"Ball diameter on the table, cm", "widget":"slider", "min":0.4, "max":2.5, "step":0.05}'
+    - '// @input float netDepthCm = 0.7 {"hint":"How deep into the net the ball lands, cm", "widget":"slider", "min":0, "max":1.2, "step":0.05}'
+    - '// @input float trailCount = 22 {"hint":"Number of trail beads", "widget":"slider", "min":4, "max":40, "step":1}'
+    - '// @input float trailLifeSec = 0.7 {"hint":"Trail bead lifetime, seconds", "widget":"slider", "min":0.1, "max":2, "step":0.05}'
+    - '// @input vec4 ballColor = "{1,1,1,1}" {"hint":"Arc ball colour", "widget":"color"}'
+    - '// @input vec4 trailColor = "{1,0.85,0.4,1}" {"hint":"Trail colour", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'

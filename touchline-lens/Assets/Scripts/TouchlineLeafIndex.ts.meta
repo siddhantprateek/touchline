@@ -1,0 +1,50 @@
+- !<AssetImportMetadata/e2da236b-099f-4d5d-abf6-65d0bc49b9c0>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f3f274d6-b0d7-41a1-9598-335d0a6fdc17
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f3f274d6-b0d7-41a1-9598-335d0a6fdc17
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 292688a2-04a3-41a8-b867-6001591abb4d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/292688a2-04a3-41a8-b867-6001591abb4d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 70ed031a-26e6-42d6-b605-99dc065cb33d
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    autoRun: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - autoRun: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineLeafIndex – LEAF scenarios for the 5 done criteria</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input bool autoRun {"hint":"Run every registered scenario in order when the Lens starts (turn off for normal use)"}'
+    - '// @ui {"widget":"group_end"}'

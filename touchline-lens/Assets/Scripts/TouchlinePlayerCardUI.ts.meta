@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/e2b6619f-bd93-4f65-be9c-56c8dd98e90f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> d8c3dfc0-2f73-4843-bc2d-6823d6ab39af
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> d8c3dfc0-2f73-4843-bc2d-6823d6ab39af
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> b3a17ff7-8ed1-4ae3-a3a5-225d8dcfb773
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/b3a17ff7-8ed1-4ae3-a3a5-225d8dcfb773>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 17358385-6eec-4676-b144-e3c014d42b1b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    awayColor: false
+    fadeSec: false
+    holdSec: false
+    homeColor: false
+    liftCm: false
+    touchesLabel: false
+    viewDistanceCm: false
+    widthCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - holdSec: 3.400000
+      fadeSec: 0.600000
+      widthCm: !<float> 13.000000
+      liftCm: !<float> 7.000000
+      viewDistanceCm: !<float> 140.000000
+      touchesLabel: Touches so far
+      homeColor: !<Vec4> {x: 0.620000, y: 0.850000, z: 1.000000, w: 1.000000}
+      awayColor: !<Vec4> {x: 0.550000, y: 0.680000, z: 1.000000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlinePlayerCardUI – pinch-a-player card</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float holdSec = 3.4 {"hint":"Seconds the card stays fully visible before it starts to fade", "widget":"slider", "min":0.5, "max":10, "step":0.1}'
+    - '// @input float fadeSec = 0.6 {"hint":"Fade-out duration in seconds", "widget":"slider", "min":0.1, "max":3, "step":0.05}'
+    - '// @input float widthCm = 13 {"hint":"Card content width in cm", "widget":"slider", "min":6, "max":20, "step":0.5}'
+    - '// @input float liftCm = 7 {"hint":"Card height above the pinched player, in cm", "widget":"slider", "min":2, "max":20, "step":0.5}'
+    - '// @input float viewDistanceCm = 140 {"hint":"Viewing distance in cm used to scale the text roles", "widget":"slider", "min":60, "max":250, "step":5}'
+    - '// @input string touchesLabel = "Touches so far" {"hint":"Label prefix for the touches line"}'
+    - '// @input vec4 homeColor = "{0.62,0.85,1,1}" {"hint":"Title colour for home-team players", "widget":"color"}'
+    - '// @input vec4 awayColor = "{0.55,0.68,1,1}" {"hint":"Title colour for away-team players", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'

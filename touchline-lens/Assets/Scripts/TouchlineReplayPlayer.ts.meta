@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/b41bfda3-81d7-4506-bb6b-b35ca5a16e08>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9ef2375c-a942-4e8a-84a4-5949db76fca2
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9ef2375c-a942-4e8a-84a4-5949db76fca2
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3d1b4c09-97eb-434f-989d-97b936b31f54
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3d1b4c09-97eb-434f-989d-97b936b31f54>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 6e884156-57d4-43e8-af95-391e0fc1fb94
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    ballColor: false
+    ballDiameterCm: false
+    playbackRate: false
+    sphereMesh: false
+    unlitMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      playbackRate: !<float> 1.000000
+      ballDiameterCm: !<float> 1.000000
+      ballColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineReplayPlayer – reconstructed move playback</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material for the ball"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh for the ball"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float playbackRate = 1 {"hint":"Replay speed (1 = real time)", "widget":"slider", "min":0.25, "max":3, "step":0.05}'
+    - '// @input float ballDiameterCm = 1 {"hint":"Ball diameter, cm (true scale would be 0.1 cm — exaggerated so it reads)", "widget":"slider", "min":0.4, "max":2.5, "step":0.05}'
+    - '// @input vec4 ballColor = "{1,1,1,1}" {"hint":"Ball colour", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'

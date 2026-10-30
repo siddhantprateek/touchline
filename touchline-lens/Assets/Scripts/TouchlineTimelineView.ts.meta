@@ -1,0 +1,95 @@
+- !<AssetImportMetadata/520ffd21-8a9e-49e4-b184-93f8f6decf7c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7fc761d3-0176-47f6-824d-f78f48ec2c71
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7fc761d3-0176-47f6-824d-f78f48ec2c71
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 32b23b18-d7e3-4a34-af42-70db8efc5a26
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/32b23b18-d7e3-4a34-af42-70db8efc5a26>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 0e210545-d9df-4c2d-8f81-f912b266dd7a
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    boxMesh: false
+    firstLaneGapCm: false
+    futureBrightness: false
+    futureGoalBrightness: false
+    goalColor: false
+    goalMarkerCm: false
+    laneSpacingCm: false
+    markerHeightCm: false
+    pinchDiameterCm: false
+    pulseSec: false
+    shotColor: false
+    shotMarkerCm: false
+    sphereMesh: false
+    stripColor: false
+    unlitMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      boxMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      goalMarkerCm: 2.600000
+      shotMarkerCm: 1.600000
+      pinchDiameterCm: !<float> 3.000000
+      firstLaneGapCm: !<float> 3.000000
+      laneSpacingCm: !<float> 3.000000
+      markerHeightCm: 1.600000
+      pulseSec: !<float> 2.000000
+      goalColor: !<Vec4> {x: 1.000000, y: 0.860000, z: 0.300000, w: 1.000000}
+      shotColor: !<Vec4> {x: 0.850000, y: 0.900000, z: 1.000000, w: 1.000000}
+      stripColor: !<Vec4> {x: 0.700000, y: 0.750000, z: 0.800000, w: 1.000000}
+      futureBrightness: 0.450000
+      futureGoalBrightness: 0.850000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineTimelineView – goal & shot markers</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material (cloned per marker)"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh for markers"}'
+    - '// @input Asset.RenderMesh boxMesh {"hint":"Box mesh for the strip"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float goalMarkerCm = 2.6 {"hint":"Goal marker diameter, cm", "widget":"slider", "min":1, "max":5, "step":0.1}'
+    - '// @input float shotMarkerCm = 1.6 {"hint":"Shot marker diameter, cm", "widget":"slider", "min":0.6, "max":4, "step":0.1}'
+    - '// @input float pinchDiameterCm = 3 {"hint":"Pinch-area diameter for every marker, cm", "widget":"slider", "min":1.5, "max":5, "step":0.1}'
+    - '// @input float firstLaneGapCm = 3 {"hint":"Distance of the first lane outside the near touchline, cm", "widget":"slider", "min":0.5, "max":8, "step":0.1}'
+    - '// @input float laneSpacingCm = 3 {"hint":"Spacing between marker lanes, cm (markers that would overlap move to the next lane)", "widget":"slider", "min":2, "max":6, "step":0.1}'
+    - '// @input float markerHeightCm = 1.6 {"hint":"Marker height above the table, cm", "widget":"slider", "min":0.5, "max":5, "step":0.1}'
+    - '// @input float pulseSec = 2 {"hint":"Pulse duration when the clock reaches a marker, seconds", "widget":"slider", "min":0.3, "max":4, "step":0.1}'
+    - '// @input vec4 goalColor = "{1,0.86,0.3,1}" {"hint":"Goal marker colour", "widget":"color"}'
+    - '// @input vec4 shotColor = "{0.85,0.9,1,1}" {"hint":"Shot marker colour", "widget":"color"}'
+    - '// @input vec4 stripColor = "{0.7,0.75,0.8,1}" {"hint":"Timeline strip colour", "widget":"color"}'
+    - '// @input float futureBrightness = 0.45 {"hint":"Brightness of markers the clock has not reached yet (0..1)", "widget":"slider", "min":0.1, "max":1, "step":0.05}'
+    - '// @input float futureGoalBrightness = 0.85 {"hint":"Brightness of goal markers the clock has not reached yet (0..1)", "widget":"slider", "min":0.1, "max":1, "step":0.05}'
+    - '// @ui {"widget":"group_end"}'

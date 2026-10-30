@@ -1,0 +1,101 @@
+- !<AssetImportMetadata/85abb867-68fa-41b3-8b82-2cd5abc42e5c>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 81506511-2688-4b90-b324-45bbfcdadbcc
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 81506511-2688-4b90-b324-45bbfcdadbcc
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 0baae4d6-083e-462c-8b59-5e36e6771d38
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/0baae4d6-083e-462c-8b59-5e36e6771d38>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 4851fbda-67c2-4f1e-b5d8-159b1155c897
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    audio: false
+    card: false
+    clockSpeed: false
+    formation: false
+    goalHoldSec: false
+    pitch: false
+    replay: false
+    replayDim: false
+    scoreboard: false
+    scrubber: false
+    shotArc: false
+    shotHoldSec: false
+    skip: false
+    skipLeadSec: false
+    startClockSec: false
+    tableRoot: false
+    timeline: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - tableRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      pitch: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      formation: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      timeline: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      replay: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      shotArc: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      audio: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      scoreboard: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      skip: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
+      scrubber: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
+      card: !<MappingBased.AssignableType_10> 00000000-0000-0000-0000-000000000000
+      startClockSec: !<float> 1290.000000
+      clockSpeed: !<float> 10.000000
+      skipLeadSec: !<float> 3.000000
+      replayDim: 0.600000
+      goalHoldSec: 1.400000
+      shotHoldSec: 0.800000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineController – LIVE / REPLAY state machine</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input SceneObject tableRoot {"hint":"Root of the virtual coffee table (its meshes dim during replays)"}'
+    - '// @input AssignableType_1 pitch {"hint":"Pitch builder (turf/lines/goals)"}'
+    - '// @input AssignableType_2 formation {"hint":"22 player tokens"}'
+    - '// @input AssignableType_3 timeline {"hint":"Goal/shot timeline markers"}'
+    - '// @input AssignableType_4 replay {"hint":"Replay playback (ball + token tracks)"}'
+    - '// @input AssignableType_5 shotArc {"hint":"Goal pop-out arc"}'
+    - '// @input AssignableType_6 audio {"hint":"Crowd roar / net audio"}'
+    - '// @input AssignableType_7 scoreboard {"hint":"Score + LIVE clock label"}'
+    - '// @input AssignableType_8 skip {"hint":"Skip to next moment button"}'
+    - '// @input AssignableType_9 scrubber {"hint":"Replay scrub slider"}'
+    - '// @input AssignableType_10 card {"hint":"Player card"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float startClockSec = 1290 {"hint":"Simulated clock start, match seconds (1290 = 21:30, 54 s before the first goal)", "widget":"slider", "min":0, "max":7400, "step":1}'
+    - '// @input float clockSpeed = 10 {"hint":"Simulated clock speed (match seconds per real second)", "widget":"slider", "min":1, "max":60, "step":1}'
+    - '// @input float skipLeadSec = 3 {"hint":"Skip lands this many match seconds before the next marker", "widget":"slider", "min":0, "max":15, "step":0.5}'
+    - '// @input float replayDim = 0.6 {"hint":"Table + pitch brightness during a replay (1 = no dimming)", "widget":"slider", "min":0.2, "max":1, "step":0.05}'
+    - '// @input float goalHoldSec = 1.4 {"hint":"Seconds to hold on the net after a goal arc lands before returning to LIVE", "widget":"slider", "min":0, "max":5, "step":0.1}'
+    - '// @input float shotHoldSec = 0.8 {"hint":"Seconds to hold on the last frame of a non-goal replay", "widget":"slider", "min":0, "max":5, "step":0.1}'
+    - '// @ui {"widget":"group_end"}'

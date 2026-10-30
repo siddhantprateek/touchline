@@ -1,0 +1,65 @@
+- !<AssetImportMetadata/e22417ed-69f5-49b2-abc2-f74b949eee8e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 77eb64ae-d146-4541-ab52-f04324d345ca
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 77eb64ae-d146-4541-ab52-f04324d345ca
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> f18d5e27-809b-4b52-ac19-2f864a701002
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/f18d5e27-809b-4b52-ac19-2f864a701002>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 38edd300-1861-4341-b714-0baaa863edbd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraObject: false
+    eyeHeightCm: false
+    settleFrames: false
+    tableDistanceCm: false
+    tableHeightCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      tableDistanceCm: !<float> 120.000000
+      eyeHeightCm: !<float> 120.000000
+      tableHeightCm: !<float> 45.000000
+      settleFrames: !<float> 3.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineTableAnchor – place table + pitch in front of the user</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input SceneObject cameraObject {"hint":"The main camera (Specs device-tracked camera)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - "// @input float tableDistanceCm = 120 {\"hint\":\"Distance from the user's start position to the table centre, cm\", \"widget\":\"slider\", \"min\":60, \"max\":250, \"step\":5}"
+    - '// @input float eyeHeightCm = 120 {"hint":"Eye height above the floor at start (seated on a sofa ≈ 120), cm", "widget":"slider", "min":80, "max":190, "step":1}'
+    - '// @input float tableHeightCm = 45 {"hint":"Coffee-table height (floor to table top), cm", "widget":"slider", "min":25, "max":90, "step":1}'
+    - '// @input float settleFrames = 3 {"hint":"Frames to wait for tracking before placing", "widget":"slider", "min":1, "max":30, "step":1}'
+    - '// @ui {"widget":"group_end"}'

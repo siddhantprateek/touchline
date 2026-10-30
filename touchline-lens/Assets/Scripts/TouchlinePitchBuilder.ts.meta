@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/6421bfe4-0a22-4bc5-ac90-9642acb1059e>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e1805006-fa5b-4107-b59e-a4756afead1d
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e1805006-fa5b-4107-b59e-a4756afead1d
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 3be4bd2c-b5a1-4a52-84ca-c4484b313e23
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/3be4bd2c-b5a1-4a52-84ca-c4484b313e23>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 81676102-5c84-4343-9b5e-5acb7305d838
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    boxMesh: false
+    goalHeightScale: false
+    lineColor: false
+    lineWidthCm: false
+    netColor: false
+    sphereMesh: false
+    stripeColor: false
+    turfColor: false
+    unlitMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      boxMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      turfColor: !<Vec4> {x: 0.160000, y: 0.520000, z: 0.220000, w: 1.000000}
+      stripeColor: !<Vec4> {x: 0.200000, y: 0.600000, z: 0.260000, w: 1.000000}
+      lineColor: !<Vec4> {x: 0.920000, y: 0.950000, z: 0.920000, w: 1.000000}
+      netColor: !<Vec4> {x: 0.400000, y: 0.420000, z: 0.450000, w: 1.000000}
+      lineWidthCm: 0.220000
+      goalHeightScale: 1.500000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlinePitchBuilder – turf, lines, goals</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material (cloned and tinted per part)"}'
+    - '// @input Asset.RenderMesh boxMesh {"hint":"Box mesh used for turf, lines and goal frames"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere/cylinder-free spots are drawn with this mesh"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input vec4 turfColor = "{0.16,0.52,0.22,1}" {"hint":"Turf colour (mid green — the display is additive, keep it bright enough)", "widget":"color"}'
+    - '// @input vec4 stripeColor = "{0.2,0.6,0.26,1}" {"hint":"Colour of the alternate mowing stripes", "widget":"color"}'
+    - '// @input vec4 lineColor = "{0.92,0.95,0.92,1}" {"hint":"Pitch line colour", "widget":"color"}'
+    - '// @input vec4 netColor = "{0.4,0.42,0.45,1}" {"hint":"Goal net colour (faint on an additive display)", "widget":"color"}'
+    - '// @input float lineWidthCm = 0.22 {"hint":"Line width in cm", "widget":"slider", "min":0.1, "max":0.6, "step":0.01}'
+    - '// @input float goalHeightScale = 1.5 {"hint":"Visual goal height multiplier (1 = true scale, 1.33 cm)", "widget":"slider", "min":1, "max":3, "step":0.05}'
+    - '// @ui {"widget":"group_end"}'

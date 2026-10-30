@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/c34a99ba-274e-458c-9e29-5409dd34b0ff>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f65304dc-4600-4934-a8de-41d1c56a853b
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f65304dc-4600-4934-a8de-41d1c56a853b
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> ead280b9-07aa-4857-8135-e5918796123d
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/ead280b9-07aa-4857-8135-e5918796123d>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 3e514420-3df2-450d-a922-495914fb9fd9
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    awayLabel: false
+    creditText: false
+    homeLabel: false
+    liveColor: false
+    panelWidthCm: false
+    replayColor: false
+    scoreColor: false
+    viewDistanceCm: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - homeLabel: ARG
+      awayLabel: FRA
+      creditText: "Data: StatsBomb"
+      viewDistanceCm: !<float> 140.000000
+      panelWidthCm: !<float> 21.000000
+      scoreColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      liveColor: !<Vec4> {x: 0.550000, y: 1.000000, z: 0.600000, w: 1.000000}
+      replayColor: !<Vec4> {x: 1.000000, y: 0.850000, z: 0.400000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineScoreboardUI – score, LIVE clock, data credit</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input string homeLabel = "ARG" {"hint":"Short label for the home team (no crests or tournament branding)"}'
+    - '// @input string awayLabel = "FRA" {"hint":"Short label for the away team"}'
+    - '// @input string creditText = "Data: StatsBomb" {"hint":"Data credit shown under the scoreboard (required by the StatsBomb licence)"}'
+    - '// @input float viewDistanceCm = 140 {"hint":"Viewing distance in cm used to scale the text roles", "widget":"slider", "min":60, "max":250, "step":5}'
+    - '// @input float panelWidthCm = 21 {"hint":"Panel content width in cm", "widget":"slider", "min":10, "max":40, "step":0.5}'
+    - '// @input vec4 scoreColor = "{1,1,1,1}" {"hint":"Score line colour", "widget":"color"}'
+    - '// @input vec4 liveColor = "{0.55,1,0.6,1}" {"hint":"Clock colour while LIVE", "widget":"color"}'
+    - '// @input vec4 replayColor = "{1,0.85,0.4,1}" {"hint":"Clock colour while a replay is playing", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'
