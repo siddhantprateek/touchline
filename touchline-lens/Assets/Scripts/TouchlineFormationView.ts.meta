@@ -37,6 +37,8 @@
     hoverScale: false
     idleDriftCm: false
     namedRingColor: false
+    numberColor: false
+    numberSize: false
     pinchDiameterCm: false
     tokenDiameterCm: false
     unlitMaterial: false
@@ -52,12 +54,14 @@
     - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       cylinderMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
       tokenDiameterCm: 1.500000
+      numberSize: !<float> 36.000000
       pinchDiameterCm: !<float> 4.000000
       hoverScale: 1.350000
       idleDriftCm: 0.350000
       followSpeed: !<float> 8.000000
       homeColor: !<Vec4> {x: 0.550000, y: 0.820000, z: 1.000000, w: 1.000000}
       homeAccent: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      numberColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       awayColor: !<Vec4> {x: 0.180000, y: 0.360000, z: 1.000000, w: 1.000000}
       awayOutline: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       namedRingColor: !<Vec4> {x: 1.000000, y: 0.850000, z: 0.350000, w: 1.000000}
@@ -73,13 +77,15 @@
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Settings"}'
-    - '// @input float tokenDiameterCm = 1.5 {"hint":"Token visual diameter in cm", "widget":"slider", "min":0.8, "max":3, "step":0.05}'
+    - '// @input float tokenDiameterCm = 1.7 {"hint":"Token visual diameter in cm", "widget":"slider", "min":0.8, "max":3, "step":0.05}'
+    - '// @input float numberSize = 36 {"hint":"Shirt-number text size (Lens Studio text points; ~36 gives digits about 0.8 cm tall)", "widget":"slider", "min":12, "max":80, "step":1}'
     - '// @input float pinchDiameterCm = 4 {"hint":"Invisible pinch-area diameter in cm (larger than the token so tiny players are easy to pinch)", "widget":"slider", "min":1.5, "max":6, "step":0.1}'
     - '// @input float hoverScale = 1.35 {"hint":"Scale applied to a token while it is aimed at", "widget":"slider", "min":1, "max":2, "step":0.05}'
     - '// @input float idleDriftCm = 0.35 {"hint":"Idle drift amplitude in LIVE mode, cm", "widget":"slider", "min":0, "max":1.5, "step":0.05}'
     - '// @input float followSpeed = 8 {"hint":"How quickly tokens glide to new positions (higher = snappier)", "widget":"slider", "min":1, "max":30, "step":0.5}'
-    - '// @input vec4 homeColor = "{0.55,0.82,1,1}" {"hint":"Argentina token body (light blue)", "widget":"color"}'
-    - '// @input vec4 homeAccent = "{1,1,1,1}" {"hint":"Argentina token cap (white)", "widget":"color"}'
+    - '// @input vec4 homeColor = "{0.3,0.65,1,1}" {"hint":"Argentina shirt colour (celeste); deep enough that the white number stays readable", "widget":"color"}'
+    - '// @input vec4 homeAccent = "{1,1,1,1}" {"hint":"Argentina token rim (white)", "widget":"color"}'
+    - '// @input vec4 numberColor = "{1,1,1,1}" {"hint":"Shirt-number colour (white; avoid black, it disappears on the additive display)", "widget":"color"}'
     - '// @input vec4 awayColor = "{0.18,0.36,1,1}" {"hint":"France token body (bright royal blue)", "widget":"color"}'
     - '// @input vec4 awayOutline = "{1,1,1,1}" {"hint":"France token outline (white)", "widget":"color"}'
     - '// @input vec4 namedRingColor = "{1,0.85,0.35,1}" {"hint":"Ring under named (pinchable) players during a replay", "widget":"color"}'

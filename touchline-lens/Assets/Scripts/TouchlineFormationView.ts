@@ -23,6 +23,7 @@ interface Token {
   interactable: Interactable
   collider: ColliderComponent
   parts: {rmv: RenderMeshVisual; color: vec4}[]
+  numberText: Text
   team: 0 | 1
   playerId: number | null
   target: vec3
@@ -49,7 +50,12 @@ export class TouchlineFormationView extends BaseScriptComponent {
   @input
   @hint("Token visual diameter in cm")
   @widget(new SliderWidget(0.8, 3, 0.05))
-  tokenDiameterCm: number = 1.5
+  tokenDiameterCm: number = 1.7
+
+  @input
+  @hint("Shirt-number text size (Lens Studio text points; ~36 gives digits about 0.8 cm tall)")
+  @widget(new SliderWidget(12, 80, 1))
+  numberSize: number = 36
 
   @input
   @hint("Invisible pinch-area diameter in cm (larger than the token so tiny players are easy to pinch)")
@@ -71,15 +77,20 @@ export class TouchlineFormationView extends BaseScriptComponent {
   @widget(new SliderWidget(1, 30, 0.5))
   followSpeed: number = 8
 
-  @input('vec4', '{0.55,0.82,1,1}')
+  @input('vec4', '{0.3,0.65,1,1}')
   @widget(new ColorWidget())
-  @hint("Argentina token body (light blue)")
+  @hint("Argentina shirt colour (celeste); deep enough that the white number stays readable")
   homeColor: vec4
 
   @input('vec4', '{1,1,1,1}')
   @widget(new ColorWidget())
-  @hint("Argentina token cap (white)")
+  @hint("Argentina token rim (white)")
   homeAccent: vec4
+
+  @input('vec4', '{1,1,1,1}')
+  @widget(new ColorWidget())
+  @hint("Shirt-number colour (white; avoid black, it disappears on the additive display)")
+  numberColor: vec4
 
   @input('vec4', '{0.18,0.36,1,1}')
   @widget(new ColorWidget())
@@ -98,6 +109,7 @@ export class TouchlineFormationView extends BaseScriptComponent {
   @ui.group_end
 
   private tokens: Token[] = []
+  private readonly shirtNumbers = new Map<number, number>(MATCH.players.map((p) => [p.id, p.number]))
   private dim = 1
   private replayMode = false
   private readonly pinchEvent = new Event<number>()
@@ -183,6 +195,8 @@ export class TouchlineFormationView extends BaseScriptComponent {
       this.rebuildVisual(tok)
     }
     tok.playerId = playerId
+    const shirt = playerId !== null ? this.shirtNumbers.get(playerId) : undefined
+    tok.numberText.text = shirt !== undefined ? String(shirt) : ""
     tok.root.name = playerId !== null ? `Token_${playerId}` : `Token_anon`
     tok.interactable.enabled = pinchable
     tok.collider.enabled = pinchable
@@ -224,6 +238,21 @@ export class TouchlineFormationView extends BaseScriptComponent {
     visual.setParent(root)
     const ring = global.scene.createSceneObject("NamedRing")
     ring.setParent(root)
+    // Shirt number lying flat on the coin's top face, reading upright from the user's side (+Z).
+    const numberSO = global.scene.createSceneObject("ShirtNumber")
+    numberSO.setParent(visual)
+    const nt = numberSO.getTransform()
+    nt.setLocalPosition(new vec3(0, 0.34, 0))
+    nt.setLocalRotation(quat.angleAxis(-Math.PI / 2, vec3.right()))
+    const numberText = numberSO.createComponent("Component.Text") as Text
+    numberText.text = ""
+    numberText.size = this.numberSize
+    numberText.horizontalAlignment = HorizontalAlignment.Center
+    numberText.verticalAlignment = VerticalAlignment.Center
+    numberText.horizontalOverflow = HorizontalOverflow.Overflow
+    numberText.verticalOverflow = VerticalOverflow.Overflow
+    numberText.depthTest = true
+    numberText.textFill.color = this.numberColor
     const tok: Token = {
       root,
       visual,
@@ -231,6 +260,7 @@ export class TouchlineFormationView extends BaseScriptComponent {
       interactable,
       collider,
       parts: [],
+      numberText,
       team,
       playerId: null,
       target: vec3.zero(),
@@ -259,8 +289,8 @@ export class TouchlineFormationView extends BaseScriptComponent {
       tok.parts.push({rmv, color})
     }
     if (tok.team === 0) {
-      add("Body", this.homeColor, new vec3(d, 0.55, d), vec3.zero())
-      add("Cap", this.homeAccent, new vec3(d * 0.45, 0.6, d * 0.45), new vec3(0, 0.03, 0))
+      add("Rim", this.homeAccent, new vec3(d * 1.12, 0.45, d * 1.12), new vec3(0, -0.06, 0))
+      add("Body", this.homeColor, new vec3(d * 0.92, 0.6, d * 0.92), vec3.zero())
     } else {
       add("Outline", this.awayOutline, new vec3(d * 1.12, 0.45, d * 1.12), new vec3(0, -0.06, 0))
       add("Body", this.awayColor, new vec3(d * 0.92, 0.6, d * 0.92), vec3.zero())
@@ -270,5 +300,6 @@ export class TouchlineFormationView extends BaseScriptComponent {
 
   private applyColors(tok: Token): void {
     for (const p of tok.parts) p.rmv.mainMaterial.mainPass.baseColor = scaleColor(p.color, this.dim)
+    tok.numberText.textFill.color = scaleColor(this.numberColor, this.dim)
   }
 }

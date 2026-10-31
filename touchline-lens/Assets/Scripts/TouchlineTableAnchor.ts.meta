@@ -30,6 +30,7 @@
   ScriptInputsHidden:
     cameraObject: false
     eyeHeightCm: false
+    pitchBelowGazeDeg: false
     settleFrames: false
     tableDistanceCm: false
     tableHeightCm: false
@@ -46,6 +47,7 @@
       tableDistanceCm: !<float> 120.000000
       eyeHeightCm: !<float> 120.000000
       tableHeightCm: !<float> 45.000000
+      pitchBelowGazeDeg: !<float> 15.000000
       settleFrames: !<float> 3.000000
   ScriptTypes:
     -
@@ -61,5 +63,6 @@
     - "// @input float tableDistanceCm = 120 {\"hint\":\"Distance from the user's start position to the table centre, cm\", \"widget\":\"slider\", \"min\":60, \"max\":250, \"step\":5}"
     - '// @input float eyeHeightCm = 120 {"hint":"Eye height above the floor at start (seated on a sofa ≈ 120), cm", "widget":"slider", "min":80, "max":190, "step":1}'
     - '// @input float tableHeightCm = 45 {"hint":"Coffee-table height (floor to table top), cm", "widget":"slider", "min":25, "max":90, "step":1}'
+    - '// @input float pitchBelowGazeDeg = 10 {"hint":"Angle of the pitch centre below a straight-ahead gaze, degrees. SPECS shows about ±18° vertically, so ~15 keeps the whole pitch in view at start. 0 = use eye/table heights instead.", "widget":"slider", "min":0, "max":30, "step":1}'
     - '// @input float settleFrames = 3 {"hint":"Frames to wait for tracking before placing", "widget":"slider", "min":1, "max":30, "step":1}'
     - '// @ui {"widget":"group_end"}'

@@ -5,3 +5,19 @@ repomix-output.xml
 touchline-lens/*.lock
 touchline-lens/_package_backup/
 touchline-lens/tempAssetGen/
+
+# Agent tooling / local state
+.agents/
+agent/
+.claude/skills/
+skills-lock.json
+touchline-lens/.claude/
+touchline-lens/.codex/
+touchline-lens/.cursor/
+touchline-lens/.icon_tmp/
+touchline-lens/.virtual-scene.json
+touchline-lens/Cache/
+touchline-lens/leaf_plugin_settings.json
+touchline-lens/spk_debug_key.pem
+touchline-lens/_package_backup/
+touchline-lens/tools/statsbomb/raw/

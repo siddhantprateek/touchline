@@ -5,8 +5,8 @@
     - !<own> 0005641c-028d-459a-0000-000000014b4d
     - !<own> f5d74682-203a-4970-81ea-9fa7b88c96bb
     - !<own> 434652d6-c805-4f99-b577-99e6eb7d3e3b
-    - !<own> b733e464-dda0-4068-bf90-70f763e0948d
     - !<own> 506d0922-e287-4aa0-adf1-afecd54c1fcb
+    - !<own> 6cfa3d0c-b8be-4c21-9f47-c9ec655a2fcc
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - id: 1
@@ -1617,6 +1617,21 @@
     - !<own> 0e778a10-bd57-4a2a-b20a-b6f4326e8058
   Components:
     []
+- !<SceneObject/6cfa3d0c-b8be-4c21-9f47-c9ec655a2fcc>
+  PrefabRemaps:
+    []
+  Name: LEAF Plugin Bridge
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 92fef4b6-fc79-453a-8b39-687fe30d7407
 - !<SceneObject/6dbaab8f-d98a-4f36-b836-1d7c8a0cca87>
   PrefabRemaps:
     []
@@ -2095,6 +2110,22 @@
     []
   Components:
     - !<own> 118205ab-5249-4b1b-a8d7-58cf225b2877
+- !<ScriptComponent/92fef4b6-fc79-453a-8b39-687fe30d7407>
+  PrefabRemaps:
+    []
+  Name: MessagingBridge
+  Enabled: true
+  ScriptAsset: !<reference> 23079398-9ea9-4714-b0bd-0fe610da2a8c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/9468c53c-f76f-49b7-8a49-b5ec6af1c5a3>
   PrefabRemaps:
     []
@@ -2565,25 +2596,11 @@
       tableDistanceCm: !<float> 120.000000
       eyeHeightCm: !<float> 120.000000
       tableHeightCm: !<float> 45.000000
+      pitchBelowGazeDeg: !<float> 10.000000
       settleFrames: !<float> 3.000000
   ScriptTypes:
     "":
       {}
-- !<SceneObject/b733e464-dda0-4068-bf90-70f763e0948d>
-  PrefabRemaps:
-    []
-  Name: AiPreviewAgent Handler
-  Enabled: false
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> bcb29fe5-0d04-42b0-bf87-8921fee361e7
 - !<SceneObject/b786dabc-29e4-4cfa-8a84-f39604ffcbdd>
   PrefabRemaps:
     []
@@ -2689,22 +2706,6 @@
     - !<own> fe93d992-1114-4f1f-8bef-0a0bbd75747d
   Components:
     []
-- !<ScriptComponent/bcb29fe5-0d04-42b0-bf87-8921fee361e7>
-  PrefabRemaps:
-    []
-  Name: AgentInspectScript
-  Enabled: true
-  ScriptAsset: !<reference> 0b25079c-f5bf-4c6d-96c4-f43b89dfa213
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      {}
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/bf2095b6-c6f8-48c8-b840-e0a6cec0dc99>
   PrefabRemaps:
     []
@@ -2874,13 +2875,12 @@
   Enabled: true
   ScriptAsset: !<reference> bca7f40e-5be6-4656-bc75-7f8f0fbff3e6
   ScriptInputsDefault:
-    tokenDiameterCm: true
     pinchDiameterCm: true
     hoverScale: true
     idleDriftCm: true
     followSpeed: true
-    homeColor: true
     homeAccent: true
+    numberColor: true
     awayColor: true
     awayOutline: true
     namedRingColor: true
@@ -2890,13 +2890,15 @@
     "":
       unlitMaterial: !<reference.Material> 2033b05d-9aed-4e8c-8946-6afbf3b3862a
       cylinderMesh: !<reference.RenderMesh> 0e3a5015-b9f6-4721-a79a-46929277f357
-      tokenDiameterCm: 1.500000
+      tokenDiameterCm: 2.200000
+      numberSize: !<float> 80.000000
       pinchDiameterCm: !<float> 4.000000
       hoverScale: 1.350000
       idleDriftCm: 0.350000
       followSpeed: !<float> 8.000000
-      homeColor: !<Vec4> {x: 0.550000, y: 0.820000, z: 1.000000, w: 1.000000}
+      homeColor: !<Vec4> {x: 0.300000, y: 0.650000, z: 1.000000, w: 1.000000}
       homeAccent: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      numberColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       awayColor: !<Vec4> {x: 0.180000, y: 0.360000, z: 1.000000, w: 1.000000}
       awayOutline: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       namedRingColor: !<Vec4> {x: 1.000000, y: 0.850000, z: 0.350000, w: 1.000000}

@@ -30,6 +30,11 @@ export class TouchlineTableAnchor extends BaseScriptComponent {
   tableHeightCm: number = 45
 
   @input
+  @hint("Angle of the pitch centre below a straight-ahead gaze, degrees. SPECS shows about ±18° vertically, so ~15 keeps the whole pitch in view at start. 0 = use eye/table heights instead.")
+  @widget(new SliderWidget(0, 30, 1))
+  pitchBelowGazeDeg: number = 10
+
+  @input
   @hint("Frames to wait for tracking before placing")
   @widget(new SliderWidget(1, 30, 1))
   settleFrames: number = 3
@@ -65,9 +70,11 @@ export class TouchlineTableAnchor extends BaseScriptComponent {
     let flat = new vec3(look.x, 0, look.z)
     if (flat.length < 1e-3) flat = new vec3(0, 0, -1)
     flat = flat.normalize()
-    const pos = camPos
-      .add(flat.uniformScale(this.tableDistanceCm))
-      .add(new vec3(0, -(this.eyeHeightCm - this.tableHeightCm), 0))
+    const drop =
+      this.pitchBelowGazeDeg > 0
+        ? this.tableDistanceCm * Math.tan((this.pitchBelowGazeDeg * Math.PI) / 180)
+        : this.eyeHeightCm - this.tableHeightCm
+    const pos = camPos.add(flat.uniformScale(this.tableDistanceCm)).add(new vec3(0, -drop, 0))
     // Root +Z must point back toward the user.
     const towardUser = flat.uniformScale(-1)
     const yaw = Math.atan2(towardUser.x, towardUser.z)
