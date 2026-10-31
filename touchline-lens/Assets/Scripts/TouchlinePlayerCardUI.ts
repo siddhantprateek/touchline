@@ -42,6 +42,10 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
   unlitMaterial: Material
 
   @input
+  @hint("Textured material for the photo quad (needs a baseTex slot, e.g. the built-in Image material)")
+  photoMaterial: Material
+
+  @input
   @hint("Box mesh (portrait panel, shoulders, photo quad)")
   boxMesh: RenderMesh
 
@@ -269,7 +273,7 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
     this.shoulderRmv = add("Shoulders", this.boxMesh, new vec4(1, 1, 1, 1), new vec3(W * 0.78, 2.8, 0.3), new vec3(0, -2.9, 0.25), this.placeholder)
     add("Face", this.sphereMesh, this.skinColor, new vec3(3.6, 4.1, 0.9), new vec3(0, 0.3, 0.5), this.placeholder)
     add("Hair", this.sphereMesh, this.hairColor, new vec3(3.8, 2.0, 0.9), new vec3(0, 2.1, 0.45), this.placeholder)
-    this.photoRmv = add("PortraitPhoto", this.boxMesh, new vec4(1, 1, 1, 1), new vec3(W, H, 0.3), new vec3(0, 0, 0.3), this.portrait)
+    this.photoRmv = addBox(this.portrait, "PortraitPhoto", this.boxMesh, (this.photoMaterial ?? this.unlitMaterial).clone(), new vec3(W, H, 0.3), new vec3(0, 0, 0.3))
     this.photoRmv.getSceneObject().enabled = false
     // Shirt number, top-right, like a trading card.
     const nso = global.scene.createSceneObject("PortraitNumber")

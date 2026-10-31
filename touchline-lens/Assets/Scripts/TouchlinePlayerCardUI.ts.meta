@@ -35,6 +35,7 @@
     holdSec: false
     homeColor: false
     liftCm: false
+    photoMaterial: false
     skinColor: false
     sphereMesh: false
     touchesLabel: false
@@ -51,6 +52,7 @@
     []
   DefaultScriptInputs:
     - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      photoMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
       boxMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
       sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
       skinColor: !<Vec4> {x: 1.000000, y: 0.780000, z: 0.620000, w: 1.000000}
@@ -71,6 +73,7 @@
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Portrait"}'
     - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material (cloned for the portrait parts)"}'
+    - '// @input Asset.Material photoMaterial {"hint":"Textured material for the photo quad (needs a baseTex slot, e.g. the built-in Image material)"}'
     - '// @input Asset.RenderMesh boxMesh {"hint":"Box mesh (portrait panel, shoulders, photo quad)"}'
     - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh (placeholder head and hair)"}'
     - '// @input vec4 skinColor = "{1,0.78,0.62,1}" {"hint":"Placeholder skin tone", "widget":"color"}'

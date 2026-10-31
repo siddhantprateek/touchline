@@ -933,6 +933,7 @@
   ScriptInputs:
     "":
       unlitMaterial: !<reference.Material> 2033b05d-9aed-4e8c-8946-6afbf3b3862a
+      photoMaterial: !<reference.Material> 39262017-06a1-45ee-9bb2-80f463734688
       boxMesh: !<reference.RenderMesh> 0a3355f2-07e8-4946-a7c8-e2fbbfac9dd0
       sphereMesh: !<reference.RenderMesh> 428fe9d0-0149-4b6a-adfb-e1ac388c825c
       skinColor: !<Vec4> {x: 1.000000, y: 0.780000, z: 0.620000, w: 1.000000}
