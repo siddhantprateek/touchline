@@ -7,8 +7,7 @@ import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
 import {FormationSpan} from "./Data/MatchTypes"
 import {MATCH} from "./Data/MatchData"
 import {toLocal} from "./TouchlinePitchSpace"
-import {Kit} from "./TouchlinePlayerWalkout"
-import {addBox, scaleColor, tinted} from "./TouchlineVisuals"
+import {addBox, Kit, scaleColor, tinted} from "./TouchlineVisuals"
 
 export interface TokenPlacement {
   team: 0 | 1
@@ -201,7 +200,7 @@ export class TouchlineFormationView extends BaseScriptComponent {
     return null
   }
 
-  /** Kit colours for a team (used by the walk-out figure so it matches the coin). */
+  /** Kit colours for a team (used by the player card portrait so it matches the coin). */
   kitFor(team: 0 | 1, keeper: boolean): Kit {
     const home = team === 0
     return {

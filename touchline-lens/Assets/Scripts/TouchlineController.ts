@@ -11,7 +11,6 @@ import {TouchlineMatchClock} from "./TouchlineMatchClock"
 import {TouchlinePitchBuilder} from "./TouchlinePitchBuilder"
 import {formatClock} from "./TouchlinePitchSpace"
 import {TouchlinePlayerCardUI} from "./TouchlinePlayerCardUI"
-import {TouchlinePlayerWalkout} from "./TouchlinePlayerWalkout"
 import {ReplayFrame, TouchlineReplayPlayer} from "./TouchlineReplayPlayer"
 import {TouchlineScoreboardUI} from "./TouchlineScoreboardUI"
 import {TouchlineScrubberUI} from "./TouchlineScrubberUI"
@@ -60,9 +59,6 @@ export class TouchlineController extends BaseScriptComponent {
   @input
   @hint("Player card")
   card: TouchlinePlayerCardUI
-  @input
-  @hint("Optional: FIFA-style player walk-out figure")
-  walkout: TouchlinePlayerWalkout
   @ui.group_end
 
   @ui.separator
@@ -180,14 +176,8 @@ export class TouchlineController extends BaseScriptComponent {
     if (!p || !pos) return
     const now = this.active ? this.active.sec : this.clock.sec
     const touches = p.touches.filter((s) => s <= now).length
-    if (this.walkout) {
-      this.walkout.walkOut(pos, this.formation.kitFor(p.team, p.position === "Goalkeeper"), p.number)
-      // The card sits above the line-up spot (it adds its own lift on top of this anchor).
-      const anchor = this.walkout.getHeadTopWorld().sub(new vec3(0, this.card.liftCm - 1, 0))
-      this.card.showPlayer(p.id, p.number, p.short, p.position, touches, p.team === 0, anchor)
-    } else {
-      this.card.showPlayer(p.id, p.number, p.short, p.position, touches, p.team === 0, pos)
-    }
+    const kit = this.formation.kitFor(p.team, p.position === "Goalkeeper")
+    this.card.showPlayer(p.id, p.number, p.short, p.position, touches, p.team === 0, pos, kit)
   }
 
   private onScrub(v: number): void {
@@ -210,7 +200,6 @@ export class TouchlineController extends BaseScriptComponent {
     this.setDim(true)
     this.timeline.setActive(m.id)
     this.card.hide()
-    if (this.walkout) this.walkout.stop()
     this.scrubber.show(`${formatClock(m.sec)} ${this.shortLabel(m)}`)
     this.scoreboard.setClock(`REPLAY ${formatClock(m.sec)} · ${this.shortLabel(m)}`, true)
     this.replay.play(m)
@@ -249,7 +238,6 @@ export class TouchlineController extends BaseScriptComponent {
 
   private tick(): void {
     if (!this.clock || !this.timeline) return
-    if (this.walkout && this.walkout.isWalking() && !this.card.isShowing()) this.walkout.stop()
     if (this._state === "LIVE") {
       const crossed = this.clock.tick(getDeltaTime())
       for (const m of crossed) {

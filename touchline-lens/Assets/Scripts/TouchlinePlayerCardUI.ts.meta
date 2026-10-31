@@ -29,11 +29,16 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     awayColor: false
+    boxMesh: false
     fadeSec: false
+    hairColor: false
     holdSec: false
     homeColor: false
     liftCm: false
+    skinColor: false
+    sphereMesh: false
     touchesLabel: false
+    unlitMaterial: false
     viewDistanceCm: false
     widthCm: false
   ScriptTypesHidden:
@@ -45,7 +50,12 @@
   Attachments:
     []
   DefaultScriptInputs:
-    - holdSec: 3.400000
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      boxMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      skinColor: !<Vec4> {x: 1.000000, y: 0.780000, z: 0.620000, w: 1.000000}
+      hairColor: !<Vec4> {x: 0.550000, y: 0.360000, z: 0.200000, w: 1.000000}
+      holdSec: 3.400000
       fadeSec: 0.600000
       widthCm: !<float> 13.000000
       liftCm: !<float> 7.000000
@@ -58,6 +68,14 @@
       {}
   InputLines:
     - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlinePlayerCardUI – pinch-a-player card</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Portrait"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material (cloned for the portrait parts)"}'
+    - '// @input Asset.RenderMesh boxMesh {"hint":"Box mesh (portrait panel, shoulders, photo quad)"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh (placeholder head and hair)"}'
+    - '// @input vec4 skinColor = "{1,0.78,0.62,1}" {"hint":"Placeholder skin tone", "widget":"color"}'
+    - '// @input vec4 hairColor = "{0.55,0.36,0.2,1}" {"hint":"Placeholder hair colour", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Settings"}'
     - '// @input float holdSec = 3.4 {"hint":"Seconds the card stays fully visible before it starts to fade", "widget":"slider", "min":0.5, "max":10, "step":0.1}'

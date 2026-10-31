@@ -45,7 +45,6 @@
     startClockSec: false
     tableRoot: false
     timeline: false
-    walkout: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -66,7 +65,6 @@
       skip: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
       scrubber: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
       card: !<MappingBased.AssignableType_10> 00000000-0000-0000-0000-000000000000
-      walkout: !<MappingBased.AssignableType_11> 00000000-0000-0000-0000-000000000000
       startClockSec: !<float> 1290.000000
       clockSpeed: !<float> 10.000000
       skipLeadSec: !<float> 3.000000
@@ -91,7 +89,6 @@
     - '// @input AssignableType_8 skip {"hint":"Skip to next moment button"}'
     - '// @input AssignableType_9 scrubber {"hint":"Replay scrub slider"}'
     - '// @input AssignableType_10 card {"hint":"Player card"}'
-    - '// @input AssignableType_11 walkout {"hint":"Optional: FIFA-style player walk-out figure"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Settings"}'

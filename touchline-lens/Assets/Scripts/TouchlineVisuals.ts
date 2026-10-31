@@ -2,6 +2,15 @@
 // Owns: creating a coloured, size-normalised mesh child (mesh AABB -> exact cm size) and
 // cloning tinted materials. Must not: hold state or decide gameplay.
 
+/** Team kit colours shared by the coins and the player card portrait. */
+export interface Kit {
+  shirt: vec4
+  shorts: vec4
+  stripe: vec4
+  /** Stripes shown on the shirt (outfield only). */
+  striped: boolean
+}
+
 /** Clone `base` and tint it. Works for Unlit and PBR presets (both expose baseColor). */
 export function tinted(base: Material, color: vec4): Material {
   const m = base.clone()
