@@ -29,11 +29,15 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     awayColor: false
+    awayKeeper: false
     awayOutline: false
+    awayStripe: false
     cylinderMesh: false
     followSpeed: false
     homeAccent: false
     homeColor: false
+    homeKeeper: false
+    homeShorts: false
     hoverScale: false
     idleDriftCm: false
     namedRingColor: false
@@ -61,6 +65,10 @@
       followSpeed: !<float> 8.000000
       homeColor: !<Vec4> {x: 0.550000, y: 0.820000, z: 1.000000, w: 1.000000}
       homeAccent: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      homeShorts: !<Vec4> {x: 0.120000, y: 0.160000, z: 0.450000, w: 1.000000}
+      homeKeeper: !<Vec4> {x: 0.750000, y: 1.000000, z: 0.150000, w: 1.000000}
+      awayKeeper: !<Vec4> {x: 1.000000, y: 0.500000, z: 0.100000, w: 1.000000}
+      awayStripe: !<Vec4> {x: 1.000000, y: 0.150000, z: 0.200000, w: 1.000000}
       numberColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       awayColor: !<Vec4> {x: 0.180000, y: 0.360000, z: 1.000000, w: 1.000000}
       awayOutline: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
@@ -84,9 +92,13 @@
     - '// @input float idleDriftCm = 0.35 {"hint":"Idle drift amplitude in LIVE mode, cm", "widget":"slider", "min":0, "max":1.5, "step":0.05}'
     - '// @input float followSpeed = 8 {"hint":"How quickly tokens glide to new positions (higher = snappier)", "widget":"slider", "min":1, "max":30, "step":0.5}'
     - '// @input vec4 homeColor = "{0.3,0.65,1,1}" {"hint":"Argentina shirt colour (celeste); deep enough that the white number stays readable", "widget":"color"}'
-    - '// @input vec4 homeAccent = "{1,1,1,1}" {"hint":"Argentina token rim (white)", "widget":"color"}'
+    - '// @input vec4 homeAccent = "{1,1,1,1}" {"hint":"Argentina shirt stripes (white)", "widget":"color"}'
+    - '// @input vec4 homeShorts = "{0.12,0.16,0.45,1}" {"hint":"Argentina shorts: the base ring (navy; real black would vanish on the additive display)", "widget":"color"}'
+    - '// @input vec4 homeKeeper = "{0.75,1,0.15,1}" {"hint":"Argentina goalkeeper shirt", "widget":"color"}'
+    - '// @input vec4 awayKeeper = "{1,0.5,0.1,1}" {"hint":"France goalkeeper shirt", "widget":"color"}'
+    - '// @input vec4 awayStripe = "{1,0.15,0.2,1}" {"hint":"France shirt stripe (red)", "widget":"color"}'
     - '// @input vec4 numberColor = "{1,1,1,1}" {"hint":"Shirt-number colour (white; avoid black, it disappears on the additive display)", "widget":"color"}'
     - '// @input vec4 awayColor = "{0.18,0.36,1,1}" {"hint":"France token body (bright royal blue)", "widget":"color"}'
-    - '// @input vec4 awayOutline = "{1,1,1,1}" {"hint":"France token outline (white)", "widget":"color"}'
+    - '// @input vec4 awayOutline = "{1,1,1,1}" {"hint":"France shorts: the base ring (white)", "widget":"color"}'
     - '// @input vec4 namedRingColor = "{1,0.85,0.35,1}" {"hint":"Ring under named (pinchable) players during a replay", "widget":"color"}'
     - '// @ui {"widget":"group_end"}'

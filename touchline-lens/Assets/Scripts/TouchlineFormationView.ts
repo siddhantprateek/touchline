@@ -25,6 +25,7 @@ interface Token {
   parts: {rmv: RenderMeshVisual; color: vec4}[]
   numberText: Text
   team: 0 | 1
+  keeper: boolean
   playerId: number | null
   target: vec3
   phase: number
@@ -84,8 +85,28 @@ export class TouchlineFormationView extends BaseScriptComponent {
 
   @input('vec4', '{1,1,1,1}')
   @widget(new ColorWidget())
-  @hint("Argentina token rim (white)")
+  @hint("Argentina shirt stripes (white)")
   homeAccent: vec4
+
+  @input('vec4', '{0.12,0.16,0.45,1}')
+  @widget(new ColorWidget())
+  @hint("Argentina shorts: the base ring (navy; real black would vanish on the additive display)")
+  homeShorts: vec4
+
+  @input('vec4', '{0.75,1,0.15,1}')
+  @widget(new ColorWidget())
+  @hint("Argentina goalkeeper shirt")
+  homeKeeper: vec4
+
+  @input('vec4', '{1,0.5,0.1,1}')
+  @widget(new ColorWidget())
+  @hint("France goalkeeper shirt")
+  awayKeeper: vec4
+
+  @input('vec4', '{1,0.15,0.2,1}')
+  @widget(new ColorWidget())
+  @hint("France shirt stripe (red)")
+  awayStripe: vec4
 
   @input('vec4', '{1,1,1,1}')
   @widget(new ColorWidget())
@@ -99,7 +120,7 @@ export class TouchlineFormationView extends BaseScriptComponent {
 
   @input('vec4', '{1,1,1,1}')
   @widget(new ColorWidget())
-  @hint("France token outline (white)")
+  @hint("France shorts: the base ring (white)")
   awayOutline: vec4
 
   @input('vec4', '{1,0.85,0.35,1}')
@@ -110,6 +131,7 @@ export class TouchlineFormationView extends BaseScriptComponent {
 
   private tokens: Token[] = []
   private readonly shirtNumbers = new Map<number, number>(MATCH.players.map((p) => [p.id, p.number]))
+  private readonly positions = new Map<number, string>(MATCH.players.map((p) => [p.id, p.position]))
   private dim = 1
   private replayMode = false
   private readonly pinchEvent = new Event<number>()
@@ -190,8 +212,10 @@ export class TouchlineFormationView extends BaseScriptComponent {
   }
 
   private assign(tok: Token, team: 0 | 1, playerId: number | null, pinchable: boolean, ring: boolean): void {
-    if (tok.team !== team) {
+    const keeper = playerId !== null && this.positions.get(playerId) === "Goalkeeper"
+    if (tok.team !== team || tok.keeper !== keeper) {
       tok.team = team
+      tok.keeper = keeper
       this.rebuildVisual(tok)
     }
     tok.playerId = playerId
@@ -262,6 +286,7 @@ export class TouchlineFormationView extends BaseScriptComponent {
       parts: [],
       numberText,
       team,
+      keeper: false,
       playerId: null,
       target: vec3.zero(),
       phase: i * 1.37,
@@ -288,12 +313,20 @@ export class TouchlineFormationView extends BaseScriptComponent {
       const rmv = addBox(tok.visual, name, this.cylinderMesh, tinted(this.unlitMaterial, color), size, center)
       tok.parts.push({rmv, color})
     }
-    if (tok.team === 0) {
-      add("Rim", this.homeAccent, new vec3(d * 1.12, 0.45, d * 1.12), new vec3(0, -0.06, 0))
-      add("Body", this.homeColor, new vec3(d * 0.92, 0.6, d * 0.92), vec3.zero())
-    } else {
-      add("Outline", this.awayOutline, new vec3(d * 1.12, 0.45, d * 1.12), new vec3(0, -0.06, 0))
-      add("Body", this.awayColor, new vec3(d * 0.92, 0.6, d * 0.92), vec3.zero())
+    const home = tok.team === 0
+    const shirt = tok.keeper ? (home ? this.homeKeeper : this.awayKeeper) : home ? this.homeColor : this.awayColor
+    // Base ring = shorts; body = shirt; stripes sit on the shirt top, either side of the number.
+    add("Shorts", home ? this.homeShorts : this.awayOutline, new vec3(d * 1.12, 0.45, d * 1.12), new vec3(0, -0.06, 0))
+    add("Shirt", shirt, new vec3(d * 0.92, 0.6, d * 0.92), vec3.zero())
+    if (!tok.keeper) {
+      const stripe = home ? this.homeAccent : this.awayStripe
+      const r = d * 0.46
+      const offsets = home ? [-0.62, -0.45, 0.45, 0.62] : [-0.6, 0.6]
+      for (const o of offsets) {
+        const x = o * r * 1.35
+        const half = Math.sqrt(Math.max(r * r - x * x, 0.01)) * 0.9
+        add("Stripe", stripe, new vec3(d * 0.09, 0.05, half * 2), new vec3(x, 0.31, 0))
+      }
     }
     this.applyColors(tok)
   }
