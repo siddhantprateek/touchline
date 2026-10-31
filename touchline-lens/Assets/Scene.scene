@@ -6,7 +6,7 @@
     - !<own> f5d74682-203a-4970-81ea-9fa7b88c96bb
     - !<own> 434652d6-c805-4f99-b577-99e6eb7d3e3b
     - !<own> 506d0922-e287-4aa0-adf1-afecd54c1fcb
-    - !<own> 6cfa3d0c-b8be-4c21-9f47-c9ec655a2fcc
+    - !<own> bb123a9c-dd85-43fa-a7e7-03055b061aab
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - id: 1
@@ -579,6 +579,40 @@
     - !<own> a6af4948-9adc-4052-ae22-db902dd2764e
   Components:
     []
+- !<ScriptComponent/1787e8bc-3e16-4f30-b414-09083b8b1790>
+  PrefabRemaps:
+    []
+  Name: TouchlinePlayerWalkout
+  Enabled: true
+  ScriptAsset: !<reference> 4437b3f4-4e98-4ac6-890c-e928b0810cf0
+  ScriptInputsDefault:
+    arriveZCm: true
+    arriveYCm: true
+    walkSec: true
+    stepRate: true
+    skinColor: true
+    hairColor: true
+    whiteColor: true
+    pupilColor: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      unlitMaterial: !<reference.Material> 2033b05d-9aed-4e8c-8946-6afbf3b3862a
+      cylinderMesh: !<reference.RenderMesh> 0e3a5015-b9f6-4721-a79a-46929277f357
+      sphereMesh: !<reference.RenderMesh> 428fe9d0-0149-4b6a-adfb-e1ac388c825c
+      heightCm: !<float> 11.000000
+      arriveZCm: !<float> 31.000000
+      arriveYCm: !<float> 1.000000
+      walkSec: 1.700000
+      stepRate: !<float> 11.000000
+      skinColor: !<Vec4> {x: 1.000000, y: 0.780000, z: 0.620000, w: 1.000000}
+      hairColor: !<Vec4> {x: 0.550000, y: 0.360000, z: 0.200000, w: 1.000000}
+      whiteColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      pupilColor: !<Vec4> {x: 0.250000, y: 0.450000, z: 1.000000, w: 1.000000}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/181c239f-175e-4912-94fc-d37a2599b2d6>
   PrefabRemaps:
     []
@@ -1153,6 +1187,7 @@
     - !<own> 852f1a3d-7b1b-43b6-aac2-1a011173cb72
     - !<own> c930df31-0e59-4266-a061-7750935dc06b
     - !<own> a0e11635-f911-4103-a973-d41eee926591
+    - !<own> 6d9ff4a2-6de1-41e9-81e6-bf20f3265bad
   Components:
     - !<own> b5eedcc5-c97f-42af-aa6f-a38a5762c48e
     - !<own> e6301f0c-bae2-4d6c-a291-1a1a7d60a1b4
@@ -1617,10 +1652,10 @@
     - !<own> 0e778a10-bd57-4a2a-b20a-b6f4326e8058
   Components:
     []
-- !<SceneObject/6cfa3d0c-b8be-4c21-9f47-c9ec655a2fcc>
+- !<SceneObject/6d9ff4a2-6de1-41e9-81e6-bf20f3265bad>
   PrefabRemaps:
     []
-  Name: LEAF Plugin Bridge
+  Name: PlayerWalkout
   Enabled: true
   Layers: 1
   LocalTransform: !<TransformEntity>
@@ -1631,7 +1666,7 @@
   Children:
     []
   Components:
-    - !<own> 92fef4b6-fc79-453a-8b39-687fe30d7407
+    - !<own> 1787e8bc-3e16-4f30-b414-09083b8b1790
 - !<SceneObject/6dbaab8f-d98a-4f36-b836-1d7c8a0cca87>
   PrefabRemaps:
     []
@@ -2110,22 +2145,6 @@
     []
   Components:
     - !<own> 118205ab-5249-4b1b-a8d7-58cf225b2877
-- !<ScriptComponent/92fef4b6-fc79-453a-8b39-687fe30d7407>
-  PrefabRemaps:
-    []
-  Name: MessagingBridge
-  Enabled: true
-  ScriptAsset: !<reference> 23079398-9ea9-4714-b0bd-0fe610da2a8c
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      {}
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/9468c53c-f76f-49b7-8a49-b5ec6af1c5a3>
   PrefabRemaps:
     []
@@ -2616,6 +2635,22 @@
     []
   Components:
     []
+- !<ScriptComponent/b83be439-9724-474d-a517-e6e5ae00877b>
+  PrefabRemaps:
+    []
+  Name: MessagingBridge
+  Enabled: true
+  ScriptAsset: !<reference> 23079398-9ea9-4714-b0bd-0fe610da2a8c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/b859e31c-4c76-46bd-bd6a-042228e52728>
   PrefabRemaps:
     []
@@ -2646,6 +2681,21 @@
     - !<own> 11ac73c9-b802-4eb6-abf5-f73054ca7e20
   Components:
     []
+- !<SceneObject/bb123a9c-dd85-43fa-a7e7-03055b061aab>
+  PrefabRemaps:
+    []
+  Name: LEAF Plugin Bridge
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> b83be439-9724-474d-a517-e6e5ae00877b
 - !<SceneObject/bb75b5ea-8baf-4d8d-bcf8-49bd79873881>
   PrefabRemaps:
     []
@@ -2880,6 +2930,10 @@
     idleDriftCm: true
     followSpeed: true
     homeAccent: true
+    homeShorts: true
+    homeKeeper: true
+    awayKeeper: true
+    awayStripe: true
     numberColor: true
     awayColor: true
     awayOutline: true
@@ -2898,6 +2952,10 @@
       followSpeed: !<float> 8.000000
       homeColor: !<Vec4> {x: 0.300000, y: 0.650000, z: 1.000000, w: 1.000000}
       homeAccent: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      homeShorts: !<Vec4> {x: 0.120000, y: 0.160000, z: 0.450000, w: 1.000000}
+      homeKeeper: !<Vec4> {x: 0.750000, y: 1.000000, z: 0.150000, w: 1.000000}
+      awayKeeper: !<Vec4> {x: 1.000000, y: 0.500000, z: 0.100000, w: 1.000000}
+      awayStripe: !<Vec4> {x: 1.000000, y: 0.150000, z: 0.200000, w: 1.000000}
       numberColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
       awayColor: !<Vec4> {x: 0.180000, y: 0.360000, z: 1.000000, w: 1.000000}
       awayOutline: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
@@ -3168,6 +3226,7 @@
       skip: !<MappingBased.AssignableType_8> e82c5cbc-e687-4ec6-8e90-1bfe79b5351f
       scrubber: !<MappingBased.AssignableType_9> 18f2c659-fb4b-4b85-91bf-9d4903ee2bce
       card: !<MappingBased.AssignableType_10> 331b440e-7501-4265-8c5a-c4fd84c5a0a7
+      walkout: !<MappingBased.AssignableType_11> 1787e8bc-3e16-4f30-b414-09083b8b1790
       startClockSec: !<float> 1290.000000
       clockSpeed: !<float> 10.000000
       skipLeadSec: !<float> 3.000000

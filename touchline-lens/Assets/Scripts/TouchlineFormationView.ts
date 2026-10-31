@@ -7,6 +7,7 @@ import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
 import {FormationSpan} from "./Data/MatchTypes"
 import {MATCH} from "./Data/MatchData"
 import {toLocal} from "./TouchlinePitchSpace"
+import {Kit} from "./TouchlinePlayerWalkout"
 import {addBox, scaleColor, tinted} from "./TouchlineVisuals"
 
 export interface TokenPlacement {
@@ -198,6 +199,17 @@ export class TouchlineFormationView extends BaseScriptComponent {
       if (tok.root.enabled && tok.playerId === playerId) return tok.root.getTransform().getWorldPosition()
     }
     return null
+  }
+
+  /** Kit colours for a team (used by the walk-out figure so it matches the coin). */
+  kitFor(team: 0 | 1, keeper: boolean): Kit {
+    const home = team === 0
+    return {
+      shirt: keeper ? (home ? this.homeKeeper : this.awayKeeper) : home ? this.homeColor : this.awayColor,
+      shorts: home ? this.homeShorts : this.awayOutline,
+      stripe: home ? this.homeAccent : this.awayStripe,
+      striped: !keeper,
+    }
   }
 
   /** Local positions of all enabled tokens (read by tests). */

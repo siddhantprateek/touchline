@@ -1,0 +1,86 @@
+- !<AssetImportMetadata/a2e77373-cc7c-47ca-b714-668c9be487c9>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 4437b3f4-4e98-4ac6-890c-e928b0810cf0
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 4437b3f4-4e98-4ac6-890c-e928b0810cf0
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 850cf058-2121-40d4-9c4e-ef107d27be49
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/850cf058-2121-40d4-9c4e-ef107d27be49>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 7f84888e-37c8-44b8-b3ab-4ecd3fba5f91
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    arriveYCm: false
+    arriveZCm: false
+    cylinderMesh: false
+    hairColor: false
+    heightCm: false
+    pupilColor: false
+    skinColor: false
+    sphereMesh: false
+    stepRate: false
+    unlitMaterial: false
+    walkSec: false
+    whiteColor: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      cylinderMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      heightCm: !<float> 14.000000
+      arriveZCm: !<float> 31.000000
+      arriveYCm: !<float> 1.000000
+      walkSec: 1.700000
+      stepRate: !<float> 11.000000
+      skinColor: !<Vec4> {x: 1.000000, y: 0.780000, z: 0.620000, w: 1.000000}
+      hairColor: !<Vec4> {x: 0.550000, y: 0.360000, z: 0.200000, w: 1.000000}
+      whiteColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+      pupilColor: !<Vec4> {x: 0.250000, y: 0.450000, z: 1.000000, w: 1.000000}
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlinePlayerWalkout – player walks toward you</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material (cloned per part)"}'
+    - '// @input Asset.RenderMesh cylinderMesh {"hint":"Cylinder mesh (limbs, torso)"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh (head, hair, eyes)"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float heightCm = 11 {"hint":"Figure height in cm", "widget":"slider", "min":6, "max":24, "step":0.5}'
+    - '// @input float arriveZCm = 31 {"hint":"Line-up spot: distance toward the viewer from the pitch centre, cm (pitch is 40 cm wide, so ~31 is just past the near edge)", "widget":"slider", "min":20, "max":50, "step":1}'
+    - '// @input float arriveYCm = 1 {"hint":"Line-up spot height above the turf, cm", "widget":"slider", "min":0, "max":15, "step":0.5}'
+    - '// @input float walkSec = 1.7 {"hint":"Seconds the walk takes", "widget":"slider", "min":0.6, "max":4, "step":0.1}'
+    - '// @input float stepRate = 11 {"hint":"Leg and arm swing speed while walking", "widget":"slider", "min":4, "max":20, "step":0.5}'
+    - '// @input vec4 skinColor = "{1,0.78,0.62,1}" {"hint":"Skin tone (stylised; bright, because dark vanishes on the additive display)", "widget":"color"}'
+    - '// @input vec4 hairColor = "{0.55,0.36,0.2,1}" {"hint":"Hair colour", "widget":"color"}'
+    - '// @input vec4 whiteColor = "{1,1,1,1}" {"hint":"Socks, eye whites and shirt numbers", "widget":"color"}'
+    - '// @input vec4 pupilColor = "{0.25,0.45,1,1}" {"hint":"Pupils (blue; dark would disappear)", "widget":"color"}'
+    - '// @ui {"widget":"group_end"}'
