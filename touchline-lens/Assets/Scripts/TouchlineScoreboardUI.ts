@@ -1,6 +1,6 @@
 // TouchlineScoreboardUI — floating score + clock label above the far touchline.
-// Owns: the scoreboard panel (BackPlate + FlexLayout column of three text rows) and the
-// "Data: StatsBomb" credit. Passive view: the controller pushes score/clock via setters.
+// Owns: the scoreboard panel (BackPlate + FlexLayout column of score and clock rows).
+// Passive view: the controller pushes score/clock via setters.
 // Must not: compute score or time, or know about match state.
 import {Billboard} from "SpectaclesInteractionKit.lspkg/Components/Interaction/Billboard/Billboard"
 import {BackPlate} from "SpectaclesUIKit.lspkg/Scripts/BackPlate"
@@ -50,10 +50,6 @@ export class TouchlineScoreboardUI extends BaseScriptComponent {
   @input
   @hint("Short label for the away team")
   awayLabel: string = "FRA"
-
-  @input
-  @hint("Data credit shown under the scoreboard (required by the StatsBomb licence)")
-  creditText: string = "Data: StatsBomb"
 
   @input
   @hint("Viewing distance in cm used to scale the text roles")
@@ -116,8 +112,6 @@ export class TouchlineScoreboardUI extends BaseScriptComponent {
     this.scoreText = score
     this.clockText = this.addLine(content, "ClockText", "LIVE 00:00", "Subheadline", 1.4, items)
     this.clockText.textFill.color = this.liveColor
-    const credit = this.addLine(content, "CreditText", this.creditText, "Caption", 1.2, items)
-    credit.textFill.color = new vec4(1, 1, 1, 0.6)
     // children carry FlexItem; auto-discovered on layout start (addItems before init throws)
   }
 

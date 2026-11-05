@@ -6,7 +6,7 @@
     - !<own> f5d74682-203a-4970-81ea-9fa7b88c96bb
     - !<own> 434652d6-c805-4f99-b577-99e6eb7d3e3b
     - !<own> 506d0922-e287-4aa0-adf1-afecd54c1fcb
-    - !<own> bb123a9c-dd85-43fa-a7e7-03055b061aab
+    - !<own> d63689c0-9d65-4df3-b2d1-8c321545208a
   layers: !<Layers/267ee9a7-aff2-4f9d-9a49-f71214747d03>
     userLayers:
       - id: 1
@@ -493,10 +493,6 @@
   Enabled: true
   ScriptAsset: !<reference> 4433252c-ed5c-4beb-8a29-22696c2aafc0
   ScriptInputsDefault:
-    durationSec: true
-    peakHeightCm: true
-    towardUserCm: true
-    peakBallDiameterCm: true
     ballDiameterCm: true
     netDepthCm: true
     trailCount: true
@@ -509,10 +505,9 @@
     "":
       unlitMaterial: !<reference.Material> 2033b05d-9aed-4e8c-8946-6afbf3b3862a
       sphereMesh: !<reference.RenderMesh> 428fe9d0-0149-4b6a-adfb-e1ac388c825c
-      durationSec: 1.600000
-      peakHeightCm: !<float> 25.000000
-      towardUserCm: !<float> 15.000000
-      peakBallDiameterCm: 2.200000
+      durationSec: 1.100000
+      towardUserCm: !<float> 6.000000
+      peakBallDiameterCm: 1.800000
       ballDiameterCm: !<float> 1.000000
       netDepthCm: 0.700000
       trailCount: !<float> 22.000000
@@ -922,7 +917,6 @@
     hairColor: true
     holdSec: true
     fadeSec: true
-    widthCm: true
     liftCm: true
     viewDistanceCm: true
     touchesLabel: true
@@ -940,7 +934,7 @@
       hairColor: !<Vec4> {x: 0.550000, y: 0.360000, z: 0.200000, w: 1.000000}
       holdSec: 3.400000
       fadeSec: 0.600000
-      widthCm: !<float> 13.000000
+      widthCm: !<float> 17.000000
       liftCm: !<float> 7.000000
       viewDistanceCm: !<float> 140.000000
       touchesLabel: Touches so far
@@ -1765,6 +1759,22 @@
     []
   Components:
     - !<own> 18f2c659-fb4b-4b85-91bf-9d4903ee2bce
+- !<ScriptComponent/79564b9c-23b3-4b31-8c80-ad4c5c676c19>
+  PrefabRemaps:
+    []
+  Name: MessagingBridge
+  Enabled: true
+  ScriptAsset: !<reference> 23079398-9ea9-4714-b0bd-0fe610da2a8c
+  ScriptInputsDefault:
+    {}
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      {}
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/7aa85bd8-d423-42cd-b190-473711e94929>
   PrefabRemaps:
     []
@@ -1909,6 +1919,34 @@
     []
   Components:
     - !<own> 335c5f8b-2917-49e8-8af5-220696e9bc09
+- !<ScriptComponent/80f71959-a0fe-4e29-b9a5-f2466f37348b>
+  PrefabRemaps:
+    []
+  Name: TouchlineGoalCelebration
+  Enabled: true
+  ScriptAsset: !<reference> 54bf7bc4-0901-424c-9c2a-cc957b25c523
+  ScriptInputsDefault:
+    gravity: true
+    durationSec: true
+    bannerText: true
+    bannerSize: true
+    bannerLiftCm: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      unlitMaterial: !<reference.Material> 2033b05d-9aed-4e8c-8946-6afbf3b3862a
+      sphereMesh: !<reference.RenderMesh> 428fe9d0-0149-4b6a-adfb-e1ac388c825c
+      bitCount: !<float> 50.000000
+      launchSpeed: !<float> 65.000000
+      gravity: !<float> 110.000000
+      durationSec: 1.600000
+      bannerText: GOAL!
+      bannerSize: !<float> 260.000000
+      bannerLiftCm: !<float> 9.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/82a4b4e8-283b-441c-8b94-9fdc50c958f2>
   PrefabRemaps:
     []
@@ -2103,6 +2141,7 @@
     []
   Components:
     - !<own> 118205ab-5249-4b1b-a8d7-58cf225b2877
+    - !<own> 80f71959-a0fe-4e29-b9a5-f2466f37348b
 - !<SceneObject/9468c53c-f76f-49b7-8a49-b5ec6af1c5a3>
   PrefabRemaps:
     []
@@ -2230,7 +2269,6 @@
   ScriptInputsDefault:
     homeLabel: true
     awayLabel: true
-    creditText: true
     viewDistanceCm: true
     panelWidthCm: true
     scoreColor: true
@@ -2242,7 +2280,6 @@
     "":
       homeLabel: ARG
       awayLabel: FRA
-      creditText: "Data: StatsBomb"
       viewDistanceCm: !<float> 140.000000
       panelWidthCm: !<float> 21.000000
       scoreColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
@@ -2593,22 +2630,6 @@
     []
   Components:
     []
-- !<ScriptComponent/b83be439-9724-474d-a517-e6e5ae00877b>
-  PrefabRemaps:
-    []
-  Name: MessagingBridge
-  Enabled: true
-  ScriptAsset: !<reference> 23079398-9ea9-4714-b0bd-0fe610da2a8c
-  ScriptInputsDefault:
-    {}
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      {}
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/b859e31c-4c76-46bd-bd6a-042228e52728>
   PrefabRemaps:
     []
@@ -2639,21 +2660,6 @@
     - !<own> 11ac73c9-b802-4eb6-abf5-f73054ca7e20
   Components:
     []
-- !<SceneObject/bb123a9c-dd85-43fa-a7e7-03055b061aab>
-  PrefabRemaps:
-    []
-  Name: LEAF Plugin Bridge
-  Enabled: true
-  Layers: 1
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> b83be439-9724-474d-a517-e6e5ae00877b
 - !<SceneObject/bb75b5ea-8baf-4d8d-bcf8-49bd79873881>
   PrefabRemaps:
     []
@@ -2986,6 +2992,21 @@
     - !<own> bbcbfc17-8d65-4333-bce1-6f7239f690b8
   Components:
     []
+- !<SceneObject/d63689c0-9d65-4df3-b2d1-8c321545208a>
+  PrefabRemaps:
+    []
+  Name: LEAF Plugin Bridge
+  Enabled: true
+  Layers: 1
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 79564b9c-23b3-4b31-8c80-ad4c5c676c19
 - !<SceneObject/d9071294-12e8-425f-98f1-bf308a02639e>
   PrefabRemaps:
     []
@@ -3179,11 +3200,12 @@
       timeline: !<MappingBased.AssignableType_3> 9c36abbc-babc-47f6-aa4b-8c3bad73c200
       replay: !<MappingBased.AssignableType_4> 578f0ec0-b4ae-457d-a23a-aab7a5bdae66
       shotArc: !<MappingBased.AssignableType_5> 118205ab-5249-4b1b-a8d7-58cf225b2877
-      audio: !<MappingBased.AssignableType_6> 5471d8b1-3c8e-4808-ba9c-083e5699847b
-      scoreboard: !<MappingBased.AssignableType_7> 9eb4a6cc-bad4-440c-b6a3-f24e70a925cd
-      skip: !<MappingBased.AssignableType_8> e82c5cbc-e687-4ec6-8e90-1bfe79b5351f
-      scrubber: !<MappingBased.AssignableType_9> 18f2c659-fb4b-4b85-91bf-9d4903ee2bce
-      card: !<MappingBased.AssignableType_10> 331b440e-7501-4265-8c5a-c4fd84c5a0a7
+      celebration: !<MappingBased.AssignableType_6> 80f71959-a0fe-4e29-b9a5-f2466f37348b
+      audio: !<MappingBased.AssignableType_7> 5471d8b1-3c8e-4808-ba9c-083e5699847b
+      scoreboard: !<MappingBased.AssignableType_8> 9eb4a6cc-bad4-440c-b6a3-f24e70a925cd
+      skip: !<MappingBased.AssignableType_9> e82c5cbc-e687-4ec6-8e90-1bfe79b5351f
+      scrubber: !<MappingBased.AssignableType_10> 18f2c659-fb4b-4b85-91bf-9d4903ee2bce
+      card: !<MappingBased.AssignableType_11> 331b440e-7501-4265-8c5a-c4fd84c5a0a7
       startClockSec: !<float> 1290.000000
       clockSpeed: !<float> 10.000000
       skipLeadSec: !<float> 3.000000

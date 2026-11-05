@@ -29,7 +29,6 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     awayLabel: false
-    creditText: false
     homeLabel: false
     liveColor: false
     panelWidthCm: false
@@ -47,7 +46,6 @@
   DefaultScriptInputs:
     - homeLabel: ARG
       awayLabel: FRA
-      creditText: "Data: StatsBomb"
       viewDistanceCm: !<float> 140.000000
       panelWidthCm: !<float> 21.000000
       scoreColor: !<Vec4> {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
@@ -62,7 +60,6 @@
     - '// @ui {"widget":"group_start", "label":"Settings"}'
     - '// @input string homeLabel = "ARG" {"hint":"Short label for the home team (no crests or tournament branding)"}'
     - '// @input string awayLabel = "FRA" {"hint":"Short label for the away team"}'
-    - '// @input string creditText = "Data: StatsBomb" {"hint":"Data credit shown under the scoreboard (required by the StatsBomb licence)"}'
     - '// @input float viewDistanceCm = 140 {"hint":"Viewing distance in cm used to scale the text roles", "widget":"slider", "min":60, "max":250, "step":5}'
     - '// @input float panelWidthCm = 21 {"hint":"Panel content width in cm", "widget":"slider", "min":10, "max":40, "step":0.5}'
     - '// @input vec4 scoreColor = "{1,1,1,1}" {"hint":"Score line colour", "widget":"color"}'

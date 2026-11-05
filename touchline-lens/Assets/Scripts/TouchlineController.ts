@@ -7,6 +7,7 @@ import {Moment} from "./Data/MatchTypes"
 import {MATCH} from "./Data/MatchData"
 import {TouchlineAudioController} from "./TouchlineAudioController"
 import {TouchlineFormationView} from "./TouchlineFormationView"
+import {TouchlineGoalCelebration} from "./TouchlineGoalCelebration"
 import {TouchlineMatchClock} from "./TouchlineMatchClock"
 import {TouchlinePitchBuilder} from "./TouchlinePitchBuilder"
 import {formatClock} from "./TouchlinePitchSpace"
@@ -44,6 +45,10 @@ export class TouchlineController extends BaseScriptComponent {
   @input
   @hint("Goal pop-out arc")
   shotArc: TouchlineShotArc
+  @input
+  @hint("Confetti + GOAL banner when a goal arc lands (optional)")
+  @allowUndefined
+  celebration: TouchlineGoalCelebration
   @input
   @hint("Crowd roar / net audio")
   audio: TouchlineAudioController
@@ -193,6 +198,7 @@ export class TouchlineController extends BaseScriptComponent {
   // ── State transitions ──────────────────────────────────────────────────────
   private startReplay(m: Moment): void {
     this.shotArc.cancel()
+    if (this.celebration) this.celebration.cancel()
     this.active = m
     this._state = "REPLAY"
     this.endAt = -1
@@ -208,6 +214,7 @@ export class TouchlineController extends BaseScriptComponent {
   private endReplay(): void {
     this.replay.stop()
     this.shotArc.cancel()
+    if (this.celebration) this.celebration.cancel()
     this.active = null
     this._state = "LIVE"
     this.endAt = -1
@@ -233,6 +240,9 @@ export class TouchlineController extends BaseScriptComponent {
   private onArcLanded(): void {
     this.audio.playNet()
     this.audio.playRoar(true)
+    if (this.celebration && this.active) {
+      this.celebration.play(this.shotArc.lastLanding, this.formation.kitFor(this.active.team, false))
+    }
     this.endAt = getTime() + this.goalHoldSec
   }
 

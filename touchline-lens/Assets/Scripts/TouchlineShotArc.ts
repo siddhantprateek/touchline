@@ -1,5 +1,5 @@
-// TouchlineShotArc — goal-only pop-out: the ball leaves the table on a cubic Bezier (peak
-// above the table, bulging toward the user) and drops back into the net, with a trail.
+// TouchlineShotArc — goal-only shot: the ball is driven off the table on a cubic Bezier that
+// climbs steadily to the net (never rises and falls) and curls out toward the user, with a trail.
 // Owns: the arc ball, trail pool, arc timing, and the measured peak/landing (read by tests).
 // Emits onLanded. Must not: play audio or change state itself.
 import Event, {PublicApi} from "SpectaclesInteractionKit.lspkg/Utils/Event"
@@ -25,20 +25,15 @@ export class TouchlineShotArc extends BaseScriptComponent {
   @input
   @hint("Arc duration in seconds")
   @widget(new SliderWidget(0.6, 4, 0.05))
-  durationSec: number = 1.6
+  durationSec: number = 1.1
 
   @input
-  @hint("Peak height above the table, cm")
-  @widget(new SliderWidget(5, 60, 1))
-  peakHeightCm: number = 25
+  @hint("Most the shot curls out toward the user, cm (scaled down for short shots)")
+  @widget(new SliderWidget(0, 20, 0.5))
+  towardUserCm: number = 6
 
   @input
-  @hint("How far the arc bulges toward the user, cm")
-  @widget(new SliderWidget(0, 40, 1))
-  towardUserCm: number = 15
-
-  @input
-  @hint("Ball diameter at the peak, cm (grows from the table-size ball)")
+  @hint("Ball diameter mid-flight, cm (grows from the table-size ball)")
   @widget(new SliderWidget(0.5, 4, 0.05))
   peakBallDiameterCm: number = 2.2
 
@@ -121,13 +116,15 @@ export class TouchlineShotArc extends BaseScriptComponent {
     const end = toLocal(to[0], to[1], to[2], this.ballDiameterCm / 2)
     const side = to[0] >= 60 ? 1 : -1
     this.p3 = new vec3(side * (PITCH_LEN_CM / 2 + this.netDepthCm), end.y, end.z)
-    // Equal-height control points: cubic peak = 0.75 * control height above the endpoints.
-    const ctrlUp = (this.peakHeightCm - Math.max(this.p0.y, this.p3.y)) / 0.75
-    const ctrlToward = this.towardUserCm / 0.75
-    const a = vec3.lerp(this.p0, this.p3, 0.25)
-    const b = vec3.lerp(this.p0, this.p3, 0.75)
-    this.p1 = new vec3(a.x, Math.max(this.p0.y, this.p3.y) + ctrlUp, a.z + ctrlToward)
-    this.p2 = new vec3(b.x, Math.max(this.p0.y, this.p3.y) + ctrlUp, b.z + ctrlToward)
+    // A driven shot: any up-then-down hump reads as a basketball throw, so height only climbs,
+    // boot to net (control heights between the endpoints keep the cubic monotonic). The ball
+    // leaves the pitch sideways instead, curling out toward the user and back in to the goal.
+    const dist = Math.sqrt((this.p3.x - this.p0.x) ** 2 + (this.p3.z - this.p0.z) ** 2)
+    const curl = Math.min(this.towardUserCm, dist * 0.3) / 0.75
+    const a = vec3.lerp(this.p0, this.p3, 0.33)
+    const b = vec3.lerp(this.p0, this.p3, 0.66)
+    this.p1 = new vec3(a.x, this.p0.y + (this.p3.y - this.p0.y) * 0.6, a.z + curl)
+    this.p2 = new vec3(b.x, this.p3.y, b.z + curl)
     this.start = getTime()
     this.lastDrop = 0
     this.lastPeakCm = 0
@@ -172,7 +169,9 @@ export class TouchlineShotArc extends BaseScriptComponent {
       b.so.getTransform().setLocalScale(new vec3(s, s, s))
     }
     if (this.start < 0) return
-    const u = Math.min(1, (now - this.start) / this.durationSec)
+    const lin = Math.min(1, (now - this.start) / this.durationSec)
+    // Fast off the boot, slightly slower near the net.
+    const u = 1 - Math.pow(1 - lin, 1.4)
     this.place(u)
     if (now - this.lastDrop > this.durationSec / this.trailCount) {
       this.lastDrop = now
@@ -182,7 +181,7 @@ export class TouchlineShotArc extends BaseScriptComponent {
       bead.born = now
       bead.so.getTransform().setLocalPosition(this.ball.getTransform().getLocalPosition())
     }
-    if (u >= 1) {
+    if (lin >= 1) {
       this.start = -1
       this.lastLanding = this.ball.getTransform().getLocalPosition()
       this.landedEvent.invoke()

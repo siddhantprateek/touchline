@@ -1,0 +1,77 @@
+- !<AssetImportMetadata/c4574354-a207-43c0-91d5-ca6475411289>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 54bf7bc4-0901-424c-9c2a-cc957b25c523
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 54bf7bc4-0901-424c-9c2a-cc957b25c523
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 4aec9414-2d4c-491a-83ad-27d1196bb50b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/4aec9414-2d4c-491a-83ad-27d1196bb50b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: ee2a638e-23d2-442c-ae58-f4d416ccb8ff
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bannerLiftCm: false
+    bannerSize: false
+    bannerText: false
+    bitCount: false
+    durationSec: false
+    gravity: false
+    launchSpeed: false
+    sphereMesh: false
+    unlitMaterial: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - unlitMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      bitCount: !<float> 36.000000
+      launchSpeed: !<float> 55.000000
+      gravity: !<float> 110.000000
+      durationSec: 1.600000
+      bannerText: GOAL!
+      bannerSize: !<float> 260.000000
+      bannerLiftCm: !<float> 9.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @ui {"widget":"label", "label":"<span style=\"color: #60A5FA;\">TouchlineGoalCelebration – confetti + GOAL banner</span>"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"References"}'
+    - '// @input Asset.Material unlitMaterial {"hint":"Unlit base material for the confetti"}'
+    - '// @input Asset.RenderMesh sphereMesh {"hint":"Sphere mesh for the confetti"}'
+    - '// @ui {"widget":"group_end"}'
+    - '// @ui {"widget":"separator"}'
+    - '// @ui {"widget":"group_start", "label":"Settings"}'
+    - '// @input float bitCount = 50 {"hint":"Number of confetti bits", "widget":"slider", "min":6, "max":60, "step":1}'
+    - '// @input float launchSpeed = 65 {"hint":"Confetti launch speed, cm/s", "widget":"slider", "min":10, "max":120, "step":1}'
+    - '// @input float gravity = 110 {"hint":"Gravity on the confetti, cm/s²", "widget":"slider", "min":0, "max":300, "step":5}'
+    - '// @input float durationSec = 1.6 {"hint":"How long the celebration lasts, seconds", "widget":"slider", "min":0.5, "max":4, "step":0.1}'
+    - '// @input string bannerText = "GOAL!" {"hint":"Banner text"}'
+    - '// @input float bannerSize = 260 {"hint":"Banner text size", "widget":"slider", "min":40, "max":1200, "step":10}'
+    - '// @input float bannerLiftCm = 9 {"hint":"Banner height above the goal, cm", "widget":"slider", "min":2, "max":30, "step":0.5}'
+    - '// @ui {"widget":"group_end"}'

@@ -30,6 +30,7 @@
   ScriptInputsHidden:
     audio: false
     card: false
+    celebration: false
     clockSpeed: false
     formation: false
     goalHoldSec: false
@@ -60,11 +61,12 @@
       timeline: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
       replay: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
       shotArc: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
-      audio: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
-      scoreboard: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
-      skip: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
-      scrubber: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
-      card: !<MappingBased.AssignableType_10> 00000000-0000-0000-0000-000000000000
+      celebration: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      audio: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      scoreboard: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
+      skip: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
+      scrubber: !<MappingBased.AssignableType_10> 00000000-0000-0000-0000-000000000000
+      card: !<MappingBased.AssignableType_11> 00000000-0000-0000-0000-000000000000
       startClockSec: !<float> 1290.000000
       clockSpeed: !<float> 10.000000
       skipLeadSec: !<float> 3.000000
@@ -84,11 +86,12 @@
     - '// @input AssignableType_3 timeline {"hint":"Goal/shot timeline markers"}'
     - '// @input AssignableType_4 replay {"hint":"Replay playback (ball + token tracks)"}'
     - '// @input AssignableType_5 shotArc {"hint":"Goal pop-out arc"}'
-    - '// @input AssignableType_6 audio {"hint":"Crowd roar / net audio"}'
-    - '// @input AssignableType_7 scoreboard {"hint":"Score + LIVE clock label"}'
-    - '// @input AssignableType_8 skip {"hint":"Skip to next moment button"}'
-    - '// @input AssignableType_9 scrubber {"hint":"Replay scrub slider"}'
-    - '// @input AssignableType_10 card {"hint":"Player card"}'
+    - '// @input AssignableType_6 celebration {"hint":"Confetti + GOAL banner when a goal arc lands (optional)"}'
+    - '// @input AssignableType_7 audio {"hint":"Crowd roar / net audio"}'
+    - '// @input AssignableType_8 scoreboard {"hint":"Score + LIVE clock label"}'
+    - '// @input AssignableType_9 skip {"hint":"Skip to next moment button"}'
+    - '// @input AssignableType_10 scrubber {"hint":"Replay scrub slider"}'
+    - '// @input AssignableType_11 card {"hint":"Player card"}'
     - '// @ui {"widget":"group_end"}'
     - '// @ui {"widget":"separator"}'
     - '// @ui {"widget":"group_start", "label":"Settings"}'

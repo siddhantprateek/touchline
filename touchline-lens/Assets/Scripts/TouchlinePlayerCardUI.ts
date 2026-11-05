@@ -79,7 +79,7 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
   @input
   @hint("Card content width in cm")
   @widget(new SliderWidget(6, 20, 0.5))
-  widthCm: number = 13
+  widthCm: number = 17
 
   @input
   @hint("Card height above the pinched player, in cm")
@@ -107,6 +107,7 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
   @ui.group_end
 
   private portrait: SceneObject
+  private closeSO: SceneObject
   private panelRmv: RenderMeshVisual
   private photoRmv: RenderMeshVisual
   private shoulderRmv: RenderMeshVisual
@@ -150,6 +151,11 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
     flex.paddingRight = 0.9
     flex.onLayoutComplete.add((r) => {
       backPlate.size = new vec2(r.containerWidth, r.containerHeight)
+      if (this.closeSO) {
+        this.closeSO
+          .getTransform()
+          .setLocalPosition(new vec3(r.containerWidth / 2 + 1.5, r.containerHeight / 2 - 1.1, 0.6))
+      }
     })
 
     const items: FlexItem[] = []
@@ -169,18 +175,19 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
     items.push(rowItem)
 
     const rowItems: FlexItem[] = []
-    const titleWidth = this.widthCm - 1.8 - 2.6
+    const titleWidth = this.widthCm - 1.8
     this.titleText = this.addRowText(row, "CardTitle", "#00 Player Name", "Subheadline", titleWidth, rowItems)
     this.titleText.horizontalAlignment = HorizontalAlignment.Left
 
+    // Close button sits outside the card, beside its top-right corner, so it never covers text.
     const closeSO = global.scene.createSceneObject("CardCloseButton")
-    closeSO.setParent(row)
+    closeSO.setParent(this.body)
     const closeBtn = closeSO.createComponent(Button.getTypeName()) as Button
     closeBtn.size = new vec3(2.2, 2.2, 1)
     const ec = closeSO.createComponent(ElementContent.getTypeName()) as ElementContent
     ec.leadingIcon = ICON_CLOSE
     closeBtn.onTriggerUp.add(() => this.hide())
-    rowItems.push(closeSO.createComponent(FlexItem.getTypeName()) as FlexItem)
+    this.closeSO = closeSO
     // children carry FlexItem; auto-discovered on layout start (addItems before init throws)
 
     this.positionText = this.addColumnText(content, "CardPosition", "Position", "Caption", items)
