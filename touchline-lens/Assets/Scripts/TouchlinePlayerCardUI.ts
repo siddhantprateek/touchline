@@ -108,7 +108,7 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
 
   private portrait: SceneObject
   private closeSO: SceneObject
-  private panelRmv: RenderMeshVisual
+  private panelBands: RenderMeshVisual[] = []
   private photoRmv: RenderMeshVisual
   private shoulderRmv: RenderMeshVisual
   private placeholder: SceneObject
@@ -274,7 +274,14 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
     this.portrait.getTransform().setLocalPosition(new vec3(-(this.widthCm / 2 + 0.9 + 0.4 + W / 2), 0, 0.4))
     const add = (name: string, mesh: RenderMesh, color: vec4, size: vec3, center: vec3, parent: SceneObject): RenderMeshVisual =>
       addBox(parent, name, mesh, tinted(this.unlitMaterial, color), size, center)
-    this.panelRmv = add("PortraitPanel", this.boxMesh, new vec4(1, 1, 1, 1), new vec3(W, H, 0.3), vec3.zero(), this.portrait)
+    // Backdrop: horizontal bands from bright kit colour at the top to dark at the bottom. Every
+    // photo is a transparent cut-out, so all players stand on the same studio-style gradient.
+    const bands = 12
+    for (let i = 0; i < bands; i++) {
+      const bh = H / bands
+      const y = H / 2 - bh * (i + 0.5)
+      this.panelBands.push(add(`PortraitBand${i}`, this.boxMesh, new vec4(1, 1, 1, 1), new vec3(W, bh + 0.01, 0.3), new vec3(0, y, 0), this.portrait))
+    }
     this.placeholder = global.scene.createSceneObject("PortraitPlaceholder")
     this.placeholder.setParent(this.portrait)
     this.shoulderRmv = add("Shoulders", this.boxMesh, new vec4(1, 1, 1, 1), new vec3(W * 0.78, 2.8, 0.3), new vec3(0, -2.9, 0.25), this.placeholder)
@@ -300,7 +307,11 @@ export class TouchlinePlayerCardUI extends BaseScriptComponent {
     if (!this.portrait) return
     const photo = PLAYER_PHOTOS[playerId]
     this.numberText.text = String(shirtNumber)
-    this.panelRmv.mainMaterial.mainPass.baseColor = new vec4(kit.shirt.x * 0.85, kit.shirt.y * 0.85, kit.shirt.z * 0.85, 1)
+    const n = this.panelBands.length
+    for (let i = 0; i < n; i++) {
+      const f = 0.95 - 0.6 * (i / Math.max(1, n - 1))
+      this.panelBands[i].mainMaterial.mainPass.baseColor = new vec4(kit.shirt.x * f, kit.shirt.y * f, kit.shirt.z * f, 1)
+    }
     this.shoulderRmv.mainMaterial.mainPass.baseColor = kit.shirt
     this.placeholder.enabled = !photo
     this.photoRmv.getSceneObject().enabled = !!photo

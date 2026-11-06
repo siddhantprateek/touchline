@@ -21,3 +21,5 @@ touchline-lens/leaf_plugin_settings.json
 touchline-lens/spk_debug_key.pem
 touchline-lens/_package_backup/
 touchline-lens/tools/statsbomb/raw/
+touchline-lens/tools/photos/raw/
+__pycache__/

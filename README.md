@@ -121,7 +121,7 @@ Lens Studio 5.23, SPECS, Spectacles Interaction Kit, Spectacles UI Kit, LEAF, CL
 
 ## Photo credits
 
-Player portraits on the player card are freely licensed images from Wikimedia Commons (CC BY / CC BY-SA / CC0), scaled and cropped to fit the card. Authors and full licence terms are on each linked file page; machine-readable credits are in `touchline-lens/tools/photos/credits.json`.
+Player portraits on the player card are freely licensed images from Wikimedia Commons (CC BY / CC BY-SA / CC0), modified for the card: cropped to head and shoulders, scaled, and the original background removed (`touchline-lens/tools/photos/cutout_photos.py`). The modified portraits are shared under the same licence as each original. Authors and full licence terms are on each linked file page; machine-readable credits are in `touchline-lens/tools/photos/credits.json`.
 
 | Player | Licence | Source |
 |---|---|---|
